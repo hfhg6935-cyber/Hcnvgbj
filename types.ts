@@ -1,4 +1,3 @@
-
 export enum Status {
     Initial = 'INITIAL',
     ApiKeyMissing = 'API_KEY_MISSING',
@@ -10,23 +9,24 @@ export enum Status {
 
 export type AppStatus = Status;
 
+export type ImageConfig = {
+    prompt: string;
+    aspectRatio: '16:9' | '9:16' | '1:1' | '4:3' | '3:4';
+}
+
 export type VideoConfig = {
     prompt: string;
     aspectRatio: '16:9' | '9:16';
     resolution: '720p' | '1080p';
-}
+};
 
-// Fix: Moved the AIStudio interface into the `declare global` block to ensure it correctly augments the global scope and avoids type conflicts.
-// This resolves the error on the 'aistudio' property declaration in the Window interface.
+// Define the aistudio interface for global window object
+// Fix: Inlined the type definition for `window.aistudio` to resolve declaration conflict errors.
 declare global {
-  // Define the interface for the aistudio object
-  interface AIStudio {
-    hasSelectedApiKey: () => Promise<boolean>;
-    openSelectKey: () => Promise<void>;
-  }
-
-  // Extend the global Window interface
   interface Window {
-    aistudio: AIStudio;
+    aistudio: {
+      hasSelectedApiKey: () => Promise<boolean>;
+      openSelectKey: () => Promise<void>;
+    };
   }
 }

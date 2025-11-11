@@ -1,5 +1,5 @@
 {
-  "name": "Anime Video Generator",
-  "description": "An application that uses AI to generate stunning anime-style videos from text prompts. Specify your scene, and watch the magic happen.",
+  "name": "Anime AI Generator (Image & Video)",
+  "description": "An application that uses AI to generate stunning anime-style images and videos from text prompts. Specify your scene, and watch the magic happen.",
   "requestFramePermissions": []
 }
